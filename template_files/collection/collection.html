@@ -1,0 +1,115 @@
+{% extends "/base.html" %}
+{% block title %}Portfolio - Collection{% endblock %}
+{% block content %}
+<div class="ms-hero-page ms-hero-img-coffee ms-hero-bg-success mb-6">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Portfolio</h1>
+      <p class="lead lead-lg color-white text-center center-block mt-2 mb-4 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">Discover our projects and the
+        <span class="color-warning">rigorous process</span> of creation. Our principles are creativity, design, experience and knowledge.</p>
+      <a href="javascript:void(0)" class="btn btn-raised btn-warning animated fadeInUp animation-delay-10">
+        <i class="zmdi zmdi-accounts"></i> Our Services</a>
+      <a href="javascript:void(0)" class="btn btn-raised btn-info animated fadeInUp animation-delay-10">
+        <i class="zmdi zmdi-email"></i> Concact us</a>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 d-none d-lg-block">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="zmdi zmdi-filter-list"></i>Filter List</h3>
+        </div>
+        <div class="card-block no-pb">
+          <form class="form-horizontal">
+            <h4 class="no-m color-primary">Categories</h4>
+            <div class="form-group mt-1">
+              <div class="radio no-mb">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios0" value="option0" checked="" class="filter" data-filter="all"> All </label>
+              </div>
+              {% for category in categories %}
+              <div class="radio no-mb">
+                <label>
+                  <input type="radio" name="optionsRadios" id="filter-{{category}}" value="{{category}}" class="filter" data-filter=".category-{{category}}"> {{category}}</label>
+              </div>
+              {% endfor %}
+            </div>
+          </form>
+          <h4 class="mt-2 color-primary no-mb">Columns</h4>
+        </div>
+        <ul class="nav nav-tabs nav-tabs-transparent indicator-primary nav-tabs-full nav-tabs-4" role="tablist">
+          <li class="nav-item">
+            <a id="Cols1" class="nav-link withoutripple" href="#home7" aria-controls="home7" role="tab" data-toggle="tab">1</a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols2" class="nav-link withoutripple" href="#profile7" aria-controls="profile7" role="tab" data-toggle="tab">2</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols3" class="nav-link active withoutripple" href="#messages7" aria-controls="messages7" role="tab" data-toggle="tab">3</a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols4" class="nav-link withoutripple" href="#settings7" aria-controls="settings7" role="tab" data-toggle="tab">4</a>
+          </li>
+        </ul>
+        <div class="card-block pr-0">
+          <form class="form-horizontal">
+            <div class="form-group no-mt">
+              <h4 class="no-m color-primary mb-2">Descriptions</h4>
+              <div class="togglebutton">
+                <label>
+                  <input id="port-show" type="checkbox"> Show description </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row" id="Container">
+        <div style="display:none;">
+          <p>armies: {{armies}}</p>
+        </div>
+
+        <!-- item -->
+        {% for army in armies %}
+        <div class="col-md-3 col-sm-6 mix category-{{army.name}}">
+          <div class="card width-auto">
+            <figure class="ms-thumbnail">
+              <img src="assets/img/collection/{{army.name}}.jpg" alt="" class="img-fluid">
+              <figcaption class="ms-thumbnail-caption text-center">
+                <div class="ms-thumbnail-caption-content">
+                  <h4 class="ms-thumbnail-caption-title mb-2">{{army.name}}</h4>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mr-1 btn-circle-white color-danger">
+                    <i class="zmdi zmdi-favorite"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs ml-1 mr-1 btn-circle-white color-warning">
+                    <i class="zmdi zmdi-star"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs ml-1 btn-circle-white color-success">
+                    <i class="zmdi zmdi-share"></i>
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+            <div class="card-block text-center">
+              <a href="javascript:void(0)" class="btn-circle btn-circle-danger btn-circle-raised btn-card-float right wow zoomInDown index-2" style="visibility: visible; animation-name: zoomInDown;">
+                <i class="zmdi zmdi-star"></i>
+              </a>
+              <h4 class="color-danger">{{army.name}}</h4>
+              <!--  Insert progress bar here -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- item -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- container -->
+{% endblock %}

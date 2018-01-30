@@ -1,0 +1,161 @@
+{% extends "/base.html" %}
+{% block title %}Army - {{army.name}}{% endblock %}
+{% block content %}
+<div class="ms-hero-page ms-hero-img-coffee ms-hero-bg-success mb-6">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{army.name}}</h1>
+      <p class="lead lead-lg color-white text-center center-block mt-2 mb-4 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">
+        <span class="color-warning">{{army.totals.total}}</span> models of <span class="color-warning">{{army.units|length}}</span> types</p>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.made}} made</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_made|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_made}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_made}}% ">
+        </div>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.based}} based</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_based|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_based}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_based}}% ">
+        </div>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.sanded}} sanded</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_sanded|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_sanded}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_sanded}}% ">
+        </div>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.sprayed}} sprayed</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_sprayed|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_sprayed}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_sprayed}}% ">
+        </div>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.magnetised}} magnetised</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_magnetised|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_magnetised}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_magnetised}}% ">
+        </div>
+    </div>
+    <div class="progress progress-lg" style="background-color: #cacaca;">
+        <span class="progress-label">{{army.totals.painted}} painted</span>
+        <div class="progress-bar progress-bar-{{army.totals.percent_painted|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_painted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_painted}}% ">
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 d-none d-lg-block">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="zmdi zmdi-filter-list"></i>Filter List</h3>
+        </div>
+        <div class="card-block no-pb">
+          <form class="form-horizontal">
+            <h4 class="no-m color-primary">Categories</h4>
+            <div class="form-group mt-1">
+              <div class="radio no-mb">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios0" value="option0" checked="" class="filter" data-filter="all"> All </label>
+              </div>
+              {% for category in categories %}
+              <div class="radio no-mb">
+                <label>
+                  <input type="radio" name="optionsRadios" id="filter-{{category}}" value="{{category}}" class="filter" data-filter=".category-{{category}}"> {{category}}</label>
+              </div>
+              {% endfor %}
+            </div>
+          </form>
+          <h4 class="mt-2 color-primary no-mb">Columns</h4>
+        </div>
+        <ul class="nav nav-tabs nav-tabs-transparent indicator-primary nav-tabs-full nav-tabs-4" role="tablist">
+          <li class="nav-item">
+            <a id="Cols1" class="nav-link withoutripple" href="#home7" aria-controls="home7" role="tab" data-toggle="tab">1</a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols2" class="nav-link withoutripple" href="#profile7" aria-controls="profile7" role="tab" data-toggle="tab">2</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols3" class="nav-link active withoutripple" href="#messages7" aria-controls="messages7" role="tab" data-toggle="tab">3</a>
+          </li>
+          <li class="nav-item">
+            <a id="Cols4" class="nav-link withoutripple" href="#settings7" aria-controls="settings7" role="tab" data-toggle="tab">4</a>
+          </li>
+        </ul>
+        <div class="card-block pr-0">
+          <form class="form-horizontal">
+            <div class="form-group no-mt">
+              <h4 class="no-m color-primary mb-2">Descriptions</h4>
+              <div class="togglebutton">
+                <label>
+                  <input id="port-show" type="checkbox"> Show description </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row" id="Container">
+        <div style="display:none;">
+          <p>values: {{values}}</p>
+          <p>army.units: {{army.units}}</p>
+          <p>all_data: {{all_data}}</p>
+        </div>
+
+        <style>
+        .progress-label {
+            z-index:100;
+            position:absolute;
+            left:25px;
+            font-size: 1.3rem;
+            color: #fff;
+          }
+        </style>
+
+        <!-- item -->
+        {% for unit in army.units %}
+        <div class="col-md-3 col-sm-6 mix category-{{unit.type}}">
+          <div class="card width-auto">
+            <figure class="ms-thumbnail">
+              <img src="assets/img/collection/port{{loop.index}}.jpg" alt="" class="img-fluid">
+              <figcaption class="ms-thumbnail-caption text-center">
+                <div class="ms-thumbnail-caption-content">
+                  <h4 class="ms-thumbnail-caption-title mb-2">{{unit.name}}</h4>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs mr-1 btn-circle-white color-danger">
+                    <i class="zmdi zmdi-favorite"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs ml-1 mr-1 btn-circle-white color-warning">
+                    <i class="zmdi zmdi-star"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="btn-circle btn-circle-raised btn-circle-xs ml-1 btn-circle-white color-success">
+                    <i class="zmdi zmdi-share"></i>
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+            <div class="card-block text-center">
+              <a href="javascript:void(0)" class="btn-circle btn-circle-danger btn-circle-raised btn-card-float right wow zoomInDown index-2" style="visibility: visible; animation-name: zoomInDown;">
+                <i class="zmdi zmdi-star"></i>
+              </a>
+              <h4 class="color-danger">{{unit.name}}</h4>
+              <div class="progress progress-sm">
+                  <div class="progress-bar progress-bar-{{unit.percent_painted|progress}}" role="progressbar" aria-valuenow="{{unit.percent_painted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{unit.percent_painted}}% ">
+                  </div>
+              </div>
+              <a href="/army?id={{unit.name}}" class="btn btn-danger">
+                <i class="zmdi zmdi-star"></i> {{unit.percent_painted}}% complete</a>
+              <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sed labore autem nesciunt ea veniam recusandae necessitatibus reprehenderit.</p>-->
+              <!--<a href="/army?id={{unit.name}}" class="btn btn-danger btn-raised">
+                <i class="zmdi zmdi-globe"></i> View</a>-->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- item -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- container -->
+{% endblock %}
