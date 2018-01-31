@@ -5,7 +5,7 @@ class HomePage(BaseHandler):
     def get(self):
         
         self.renderResponse(
-            'sample/home.html',
+            'sample/product_home.html',
         )
 
 class ListingPage(BaseHandler):
@@ -13,7 +13,7 @@ class ListingPage(BaseHandler):
     def get(self):
         
         self.renderResponse(
-            'sample/home.html',
+            'sample/product_listing.html',
         )
 
 class DetailPage(BaseHandler):
@@ -21,7 +21,7 @@ class DetailPage(BaseHandler):
     def get(self):
         
         self.renderResponse(
-            'sample/home.html',
+            'sample/product_detail.html',
         )
 
 class SearchPage(BaseHandler):
@@ -37,7 +37,7 @@ class SearchResultsPage(BaseHandler):
     def get(self):
         
         self.renderResponse(
-            'sample/home.html',
+            'sample/search_results.html',
         )
         
 class ArticlePage(BaseHandler):
