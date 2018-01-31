@@ -25,6 +25,7 @@ from oauth2client.client import GoogleCredentials
 from googleapiclient.discovery import build
 
 from handlers_base import BaseHandler
+import dao_collection
 
 INVENTORY_SHEET_ID = '1W6TtessllUmYmqzps9Udi7OVLB5gQM_aRqQbFoNmulA'
 
@@ -42,12 +43,12 @@ class CollectionPage(BaseHandler):
 
     def get(self):
             
-        ndb_armies = {}
+        armies = dao_collection.GetArmySummary()
 
         self.renderResponse(
-            'collection.html',
+            'collection/collection.html',
             categories=['AoS', '40K', 'Various'],
-            armies=ndb_armies,
+            armies=armies,
         )
 # [END collection_page]
 
@@ -107,7 +108,7 @@ class ArmyPage(BaseHandler):
         }
 
         self.renderResponse(
-            'army.html',
+            'collection/army.html',
             categories=['Leaders', 'Units', 'Behemoths', 'War Machines'],
             #TODO make the category list relate to the system the army belongs to
             values= values,
@@ -130,7 +131,7 @@ class UnitPage(BaseHandler):
         }
 
         self.renderResponse(
-            'unit.html',
+            'collection/unit.html',
             unit=unit,
         )
 # [END unit_page]

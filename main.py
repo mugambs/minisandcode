@@ -6,6 +6,7 @@ from webapp2_extras import jinja2
 # TODO: move handlers into a subpackage (https://docs.python.org/3/tutorial/modules.html#packages)
 import handlers_sample
 import handlers_data
+import handlers_portfolio
 
 
 _TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), 'template_files')

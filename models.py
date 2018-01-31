@@ -25,6 +25,7 @@ class CollectionUnit(ndb.Model):
 class CollectionArmy(ndb.Model):
     key = ndb.StringProperty()
     name = ndb.StringProperty()
+    description = ndb.TextProperty()
     system = ndb.IntegerProperty()
     stats = ndb.StructuredProperty(CollectionStats)
     units = ndb.StructuredProperty(CollectionUnit, repeated=True)
