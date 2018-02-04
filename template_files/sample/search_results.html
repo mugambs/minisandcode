@@ -1,5 +1,13 @@
 {% extends "/base.html" %}
 {% block title %}Sample | Product Listing{% endblock %}
+{% block head %}
+<script async="async" src="https://www.google.com/adsense/search/ads.js"></script>
+<!-- TODO(mabdeali): other head elements from your page should ideally go here -->
+<script type="text/javascript" charset="utf-8">
+(function(g,o){g[o]=g[o]||function(){(g[o]['q']=g[o]['q']||[]).push(
+  arguments)},g[o]['t']=1*new Date})(window,'_googCsa');
+</script>
+{% endblock %}
 {% block content %}
       <div class="ms-hero-page ms-hero-img-city2 ms-hero-bg-info mb-6">
         <div class="text-center color-white mt-6 mb-6 index-1">
@@ -295,5 +303,29 @@
             </div>
           </div>
         </div>
+        <div class="row" id="afs-bottom">
+          <div class="col-lg-12">
+          </div>
+        </div>
       </div>
+{% endblock %}
+{% block bodyscripts %}
+<script type="text/javascript">
+var pageOptions = {
+  'query': 'flowers',
+  'pubId': 'gtech-codegen',
+  'adPage': 1,
+  'location': true,
+  'sellerRatings': true,
+  'siteLinks': true
+};
+
+var adblock1 = {
+  'container':'afs-bottom',
+  'width:': 1000,
+  'number': 4
+};
+
+_googCsa('ads', pageOptions, adblock1);
+    </script>
 {% endblock %}

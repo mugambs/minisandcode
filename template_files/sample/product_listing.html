@@ -1,5 +1,20 @@
 {% extends "/base.html" %}
 {% block title %}Sample | Product Listing{% endblock %}
+{% block head %}
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/6353/_mabdeali/listingpage', [[970, 250], [970, 90], [728, 90]], 'div-gpt-ad-1517744567950-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+{% endblock %}
 {% block content %}
       <div class="ms-hero-page ms-hero-img-city2 ms-hero-bg-info mb-6">
         <div class="text-center color-white mt-6 mb-6 index-1">
@@ -352,6 +367,14 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /6353/_mabdeali/listingpage -->
+          <div id='div-gpt-ad-1517744567950-0' class="col-lg-12">
+          <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1517744567950-0'); });
+          </script>
           </div>
         </div>
       </div>
