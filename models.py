@@ -10,11 +10,11 @@ class CollectionStats(ndb.Model):
     painted = ndb.IntegerProperty()
     
     def countRemaining(self, stage):
-        return total - getattr(self, stage)
+        return self.total - getattr(self, stage)
     
     def percentComplete(self, stage):
-        remaining = countRemaining(self, stage)
-        return (remaining / total) * 100
+        remaining = self.countRemaining(stage)
+        return 100 - ((remaining * 100) / self.total)
     
 class CollectionUnit(ndb.Model):
     key = ndb.StringProperty()

@@ -23,19 +23,20 @@ def GetArmySummary():
     sheet = _GetSpreadsheetValuesForRange(spreadsheetId=INVENTORY_SHEET_ID, rangeName=rangeName)
     armies = []
     for row in sheet:  # This will break if we add a new army unless the query range changes too
+        total = int(row[2])
         army = models.CollectionArmy(
             key=row[0],
             name=row[0],
             description='TODO: Description',
             system=0,
             stats=models.CollectionStats(
-                total=int(row[2]),
-                made=int(row[2]) - int(row[3]),
-                based=int(row[2]) - int(row[4]),
-                sanded=int(row[2]) - int(row[5]),
-                sprayed=int(row[2]) - int(row[6]),
-                magnetised=int(row[2]) - int(row[7]),
-                painted=int(row[2]) - int(row[8]))
+                total=total,
+                made=total - int(row[3]),
+                based=total - int(row[4]),
+                sanded=total - int(row[5]),
+                sprayed=total - int(row[6]),
+                magnetised=total - int(row[7]),
+                painted=total - int(row[8]))
             )
         armies.append(army)
     return armies

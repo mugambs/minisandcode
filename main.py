@@ -7,6 +7,7 @@ from webapp2_extras import jinja2
 import handlers_sample
 import handlers_data
 import handlers_portfolio
+import filters
 
 
 _TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), 'template_files')
@@ -20,7 +21,10 @@ config = {
                 'jinja2.ext.autoescape',
                 'jinja2.ext.do', 
             ],
-        }
+        },
+        'filters': {
+            'progress': filters.GetProgressBarColour,
+        },
     }
 }
 # [END imports]
