@@ -31,7 +31,6 @@ config = {
 
 # [START app]
 app = webapp2.WSGIApplication([
-
     ('/collection', handlers_portfolio.CollectionPage),
     
     ('/data/update', handlers_data.UpdateDataHandler),
@@ -46,6 +45,5 @@ app = webapp2.WSGIApplication([
     ('/sample/search/results', handlers_sample.SearchResultsPage),
     ('/sample/article', handlers_sample.ArticlePage),
     ('/sample/infinitescroll', handlers_sample.InfiniteScrollPage),
-    ('/sample/mweb', handlers_sample.MWebPage),
 ], config=config, debug=True)
 # [END app]

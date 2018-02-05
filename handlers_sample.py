@@ -45,18 +45,10 @@ class ArticlePage(BaseHandler):
     def get(self):
         
         self.renderResponse(
-            'sample/home.html',
+            'sample/article.html',
         )
         
 class InfiniteScrollPage(BaseHandler):
-
-    def get(self):
-        
-        self.renderResponse(
-            'sample/home.html',
-        )
-
-class MWebPage(BaseHandler):
 
     def get(self):
         
