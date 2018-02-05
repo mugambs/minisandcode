@@ -113,7 +113,6 @@ class ArmyPage(BaseHandler):
             #TODO make the category list relate to the system the army belongs to
             values= values,
             army=army,
-            all_data=self.collection_data,
         )
 # [END army_page]
 
