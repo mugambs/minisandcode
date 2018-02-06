@@ -24,6 +24,7 @@ config = {
         },
         'filters': {
             'progress': filters.GetProgressBarColour,
+            'progresscircle': filters.GetProgressCircleColour,
         },
     }
 }
