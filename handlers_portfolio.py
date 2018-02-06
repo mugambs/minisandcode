@@ -57,63 +57,22 @@ class ArmyPage(BaseHandler):
 
     def get(self):
         army_id = self.request.get('id')
-        # Test space in name
-        # Test sheet not found
-        # Test id is missing
 
-        rangeName = '%s!A2:O50' %army_id
-        values = GetSpreadsheetValuesForRange(
-            spreadsheetId=INVENTORY_SHEET_ID, 
-            rangeName=rangeName)
+        ndb_army = dao_collection.GetNdbArmy(army_id)
 
-        logging.debug('Spreadsheet values: %s' %values)
-
-        # Test missing values in the data (e.g. no notes)
-        units = []
-        for row in values:
-            if row and row[0]: # Check that the row has a unit name associated with it, else skip
-                unit = {
-                    'name': row[0],
-                    'total': row[1],
-                    'made': row[2],
-                    'based': row[3],
-                    'sanded': row[4],
-                    'sprayed': row[5],
-                    'magnetised': row[6],
-                    'painted': row[7],
-                    'to_make': row[8],
-                    'to_base': row[9],
-                    'to_sand': row[10],
-                    'to_spray': row[11],
-                    'to_magnetise': row[12],
-                    'to_paint': row[13],
-                }
-
-                unit['percent_made'] = str((int(unit['made']) * 100.0) / int(unit['total']))
-                unit['percent_based'] = str((int(unit['based']) * 100.0) / int(unit['total']))
-                unit['percent_sanded'] = str((int(unit['sanded']) * 100.0) / int(unit['total']))
-                unit['percent_sprayed'] = str((int(unit['sprayed']) * 100.0) / int(unit['total']))
-                unit['percent_magnetised'] = str((int(unit['magnetised']) * 100.0) / int(unit['total']))
-                unit['percent_painted'] = str((int(unit['painted']) * 100.0) / int(unit['total']))
-
-                if unit['name'] == 'Total':
-                    totals = unit
-                else: 
-                    units.append(unit)
-
-        army = {
-            'name': army_id,
-            'units': units,
-            'totals': totals,
-        }
-
-        self.renderResponse(
-            'collection/army.html',
-            categories=['Leaders', 'Units', 'Behemoths', 'War Machines'],
-            #TODO make the category list relate to the system the army belongs to
-            values= values,
-            army=army,
-        )
+        if ndb_army: 
+            self.renderResponse(
+                'collection/army.html',
+                categories=['Leaders', 'Units', 'Behemoths', 'War Machines'],
+                #TODO make the category list relate to the system the army belongs to
+                ndb_army=ndb_army,
+            )
+        else:
+            self.renderResponse(
+                'error.html',
+                error_msg='Army not found',
+                debug_msg=army_id
+            )
 # [END army_page]
 
 # [START unit_page]

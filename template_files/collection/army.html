@@ -1,46 +1,63 @@
 {% extends "/base.html" %}
-{% block title %}Army - {{army.name}}{% endblock %}
+{% block title %}Army - {{ndb_army.name}}{% endblock %}
+{% block head %}
+
+{% endblock %}
 {% block content %}
 <div class="ms-hero-page ms-hero-img-coffee ms-hero-bg-success mb-6">
   <div class="container">
     <div class="text-center">
-      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{army.name}}</h1>
+      <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{ndb_army.name}}</h1>
       <p class="lead lead-lg color-white text-center center-block mt-2 mb-4 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">
-        <span class="color-warning">{{army.totals.total}}</span> models of <span class="color-warning">{{army.units|length}}</span> types</p>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.made}} made</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_made|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_made}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_made}}% ">
-        </div>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.based}} based</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_based|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_based}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_based}}% ">
-        </div>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.sanded}} sanded</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_sanded|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_sanded}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_sanded}}% ">
-        </div>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.sprayed}} sprayed</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_sprayed|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_sprayed}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_sprayed}}% ">
-        </div>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.magnetised}} magnetised</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_magnetised|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_magnetised}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_magnetised}}% ">
-        </div>
-    </div>
-    <div class="progress progress-lg" style="background-color: #cacaca;">
-        <span class="progress-label">{{army.totals.painted}} painted</span>
-        <div class="progress-bar progress-bar-{{army.totals.percent_painted|progress}}" role="progressbar" aria-valuenow="{{army.totals.percent_painted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.totals.percent_painted}}% ">
-        </div>
+        <span class="color-warning">{{ndb_army.stats.total}}</span> models of <span class="color-warning">{{ndb_army.units|length}}</span> types</p>
     </div>
   </div>
 </div>
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="progress-made"></div>
+        <h3 class="color-primary">Made</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="circles-2"></div>
+        <h3 class="color-primary">Based</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="circles-3"></div>
+        <h3 class="color-primary">Sanded</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="circles-4"></div>
+        <h3 class="color-primary">Sprayed</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="circles-5"></div>
+        <h3 class="color-primary">Magnetised</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+      <div class="text-center">
+        <div class="circle" id="circles-6"></div>
+        <h3 class="color-primary">Painted</h3>
+        <p class="small">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-lg-3 d-none d-lg-block">
       <div class="card card-primary">
@@ -97,9 +114,7 @@
     <div class="col-md-9">
       <div class="row" id="Container">
         <div style="display:none;">
-          <p>values: {{values}}</p>
-          <p>army.units: {{army.units}}</p>
-          <p>all_data: {{all_data}}</p>
+          <p>ndb_army: {{ndb_army}}</p>
         </div>
 
         <style>
@@ -113,7 +128,7 @@
         </style>
 
         <!-- item -->
-        {% for unit in army.units %}
+        {% for unit in ndb_army.units %}
         <div class="col-md-3 col-sm-6 mix category-{{unit.type}}">
           <div class="card width-auto">
             <figure class="ms-thumbnail">
@@ -139,11 +154,11 @@
               </a>
               <h4 class="color-danger">{{unit.name}}</h4>
               <div class="progress progress-sm">
-                  <div class="progress-bar progress-bar-{{unit.percent_painted|progress}}" role="progressbar" aria-valuenow="{{unit.percent_painted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{unit.percent_painted}}% ">
+                  <div class="progress-bar progress-bar-{{unit.stats.percentComplete('painted')|progress}}" role="progressbar" aria-valuenow="{{unit.stats.percentComplete('painted')}}" aria-valuemin="0" aria-valuemax="100" style="width: {{unit.stats.percentComplete('painted')}}% ">
                   </div>
               </div>
               <a href="/army?id={{unit.name}}" class="btn btn-danger">
-                <i class="zmdi zmdi-star"></i> {{unit.percent_painted}}% complete</a>
+                <i class="zmdi zmdi-star"></i> {{unit.stats.percentComplete('painted')}}% complete</a>
               <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sed labore autem nesciunt ea veniam recusandae necessitatibus reprehenderit.</p>-->
               <!--<a href="/army?id={{unit.name}}" class="btn btn-danger btn-raised">
                 <i class="zmdi zmdi-globe"></i> View</a>-->
@@ -158,4 +173,124 @@
   </div>
 </div>
 <!-- container -->
+{% endblock %}
+{% block bodyscripts %}
+<!--<script src="/assets/js/charts-circle.js"></script>-->
+<script type="text/javascript" async="async">
+$( document ).ready(function() {
+    var myCircle = Circles.create({
+        id: 'progress-made',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('made')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+
+    var myCircle2 = Circles.create({
+        id: 'circles-2',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('based')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+
+    var myCircle3 = Circles.create({
+        id: 'circles-3',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('sanded')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+
+    var myCircle4 = Circles.create({
+        id: 'circles-4',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('sprayed')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+
+    var myCircle5 = Circles.create({
+        id: 'circles-5',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('magnetised')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+
+    var myCircle6 = Circles.create({
+        id: 'circles-6',
+        radius: 60,
+        value: {{ndb_army.stats.percentComplete('painted')}},
+        maxValue: 100,
+        width: 10,
+        text: function(value) {
+            return value + '%';
+        },
+        colors: ['#f1f1f1', '#000'],
+        duration: 600,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke circle-primary',
+        maxValueStrokeClass: 'circles-maxValueStroke',
+        styleWrapper: true,
+        styleText: true
+    });
+});
+</script>
 {% endblock %}

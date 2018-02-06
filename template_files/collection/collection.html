@@ -105,7 +105,7 @@
                   <div class="progress-bar progress-bar-{{army.stats.percentComplete('painted')|progress}}" role="progressbar" aria-valuenow="{{army.stats.percentComplete('painted')}}" aria-valuemin="0" aria-valuemax="100" style="width: {{army.stats.percentComplete('painted')}}%">
                   </div>
               </div>
-              <a href="/army?id={{army.name}}" class="btn btn-danger">
+              <a href="/army?id={{army.key}}" class="btn btn-danger">
                 <i class="zmdi zmdi-star" class="btn btn-danger btn-raised"></i> {{army.stats.percentComplete('painted')}}% complete</a>
               <!--<p>Stats:<br/>
                 To Make = {{army.stats.countRemaining('made')}} = {{army.stats.percentComplete('made')}}<br/>

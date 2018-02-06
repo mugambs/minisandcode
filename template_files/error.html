@@ -1,5 +1,5 @@
 {% extends "/base.html" %}
-{% block title %}Data | Update{% endblock %}
+{% block title %}500 Error{% endblock %}
 {% block content %}
       <div class="container">
         <div class="row justify-content-center">
@@ -7,10 +7,11 @@
             <div class="card animated fadeInUp animation-delay-7 color-primary withripple">
               <div class="card-block-big color-dark">
                 <div class="text-center">
-                  <h1 class="color-primary">Snapshot of NDB Data</h1>
-                  <p class="lead lead-sm">{{armies_ndb}}</p>
+                  <h1 class="color-primary">Error 500</h1>
+                  <h2>{{error_msg}}</h2>
+                  <p class="lead lead-sm">{{debug_msg}}</p>
                   <a href="/collection" class="btn btn-primary btn-raised">
-                    <i class="zmdi zmdi-home"></i> View Collection</a>
+                    <i class="zmdi zmdi-home"></i> Home</a>
                 </div>
               </div>
             </div>

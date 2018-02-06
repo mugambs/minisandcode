@@ -5,11 +5,14 @@ class UpdateDataHandler(BaseHandler):
 
     def get(self):
 
-        ndb_armies = dao_collection.GetArmySummary()
+        dao_collection.DeleteAllNdbData()
+        armies_raw = dao_collection.LoadCollectionDataFromSource()
+        armies_ndb = dao_collection.GetAllNdbData()
         
         self.renderResponse(
             'data/home.html',
-            ndb_armies=ndb_armies,
+            armies_ndb=armies_ndb,
+            armies_raw=armies_raw,
         )
 
 class DeleteDataHandler(BaseHandler):
