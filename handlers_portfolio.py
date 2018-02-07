@@ -79,17 +79,27 @@ class ArmyPage(BaseHandler):
 class UnitPage(BaseHandler):
 
     def get(self):
-        unit_id = self.request.get('id')
+        army_id = self.request.get('army_id')
+        unit_id = self.request.get('unit_id')
         # Test space in name
         # Test sheet not found
         # Test id is missing
 
-        unit = {
-            'name': unit_id,
-        }
+        army = dao_collection.GetNdbArmy(army_id)
+        for u in army.units:
+            if u.key == unit_id:
+                unit = u
 
-        self.renderResponse(
-            'collection/unit.html',
-            unit=unit,
-        )
+        if army and unit:
+            self.renderResponse(
+                'collection/unit.html',
+                army=army,
+                unit=unit,
+            )
+        else:
+            self.renderResponse(
+                'error.html',
+                error_msg='Unit not found',
+                debug_msg='army_id: %s, unit_id: %s' % (army_id, unit_id),
+            )
 # [END unit_page]

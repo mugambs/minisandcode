@@ -3,18 +3,61 @@
 {% block content %}
 <div class="ms-hero-page-override ms-hero-bg-primary ms-hero-img-coffee">
   <h2 class="text-center no-m pt-4 pb-4 color-white index-1 animated fadeInUp animation-delay-7">{{unit.name}}</h2>
-  <p class="lead color-white index-1 text-center animated fadeInUp animation-delay-9">Put here the description of your work.</p>
+  <p class="lead color-white index-1 text-center animated fadeInUp animation-delay-9">{{unit}}</p>
 </div>
 <div class="container">
   <div class="card card-hero animated fadeInUp animation-delay-7">
-    <img src="assets/img/units/portG1.jpg" alt="..." class="img-fluid">
+    <div id="carousel-example-generic5" class="ms-carousel ms-carousel-thumb carousel slide" data-ride="carousel">
+      <div class="card card-relative">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                  <img class="d-block img-fluid" style="height: 100%; width: 100%; object-fit: contain"  src="/assets/img/demo/car2.jpg" alt="...">
+                  <div class="carousel-caption">
+                      <h3>{{unit.name}}</h3>
+                      <p>{{unit.stats}}</p>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <img class="d-block img-fluid" style="height: 100%; width: 100%; object-fit: contain"  src="/assets/img/demo/car1.png" alt="...">
+                  <div class="carousel-caption">
+                      <h3>{{unit.name}}</h3>
+                      <p>{{unit.stats}}</p>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <img class="d-block img-fluid" style="height: 100%; width: 100%; object-fit: contain"  src="/assets/img/demo/paris.jpg" alt="...">
+                  <div class="carousel-caption">
+                      <h3>{{unit.name}}</h3>
+                      <p>{{unit.stats}}</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Controls -->
+          <a href="#carousel-example-generic5" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary left carousel-control-prev" role="button" data-slide="prev"><i class="zmdi zmdi-chevron-left"></i></a>
+          <a href="#carousel-example-generic5" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary right carousel-control-next" role="button" data-slide="next"><i class="zmdi zmdi-chevron-right"></i></a>
+      </div>
+      <!-- Indicators -->
+      <ol class="carousel-indicators carousel-indicators-tumbs carousel-indicators-tumbs-outside">
+          <li data-target="#carousel-example-generic5" data-slide-to="0" class="active">
+              <img class="" src="/assets/img/demo/car2-thumb.jpg" alt="">
+          </li>
+          <li data-target="#carousel-example-generic5" data-slide-to="1">
+              <img class="" src="/assets/img/demo/car1-thumb.png" alt="">
+          </li>
+          <li data-target="#carousel-example-generic5" data-slide-to="2">
+              <img class="" src="/assets/img/demo/paris-thumb.png" alt="">
+          </li>
+      </ol>
+    </div>
     <div class="row">
       <div class="col-lg-6">
         <div class="card-block">
           <h3 class="color-primary">Data</h3>
           <ul class="list-unstyled">
             <li>
-              <strong>Title:</strong> the title item</li>
+              <strong>Race / Faction:</strong> {{army.name}}</li>
             <li>
               <strong>Categories:</strong> Nature, Landscape, animals.</li>
             <li>
@@ -65,3 +108,6 @@
 </div>
 <!-- container -->
 {% endblock %} 
+{% block bodyscripts %}
+<script src="/assets/js/component-carousels.js"></script>
+{% endblock %}

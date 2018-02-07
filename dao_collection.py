@@ -68,7 +68,9 @@ def _ProcessArmyTab(army_id, sheet):
             if row[0] == 'Total':
                 army.stats = stats
             else: 
-                unit = models.CollectionUnit(key=row[0], name=row[0], stats=stats)
+                unit_name = row[0]
+                unit_key = ''.join(row[0].split()).lower()
+                unit = models.CollectionUnit(key=unit_key, name=unit_name, stats=stats)
                 army.units.append(unit)
     # logging.debug('Created Army object: %s' %army)            
     return army

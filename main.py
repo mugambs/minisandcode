@@ -34,6 +34,7 @@ config = {
 app = webapp2.WSGIApplication([
     ('/collection', handlers_portfolio.CollectionPage),
     ('/army', handlers_portfolio.ArmyPage),
+    ('/unit', handlers_portfolio.UnitPage),
     
     ('/data/update', handlers_data.UpdateDataHandler),
     ('/data/delete', handlers_data.DeleteDataHandler),

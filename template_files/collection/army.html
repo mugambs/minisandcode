@@ -157,7 +157,7 @@
                   <div class="progress-bar progress-bar-{{unit.stats.percentComplete('painted')|progress}}" role="progressbar" aria-valuenow="{{unit.stats.percentComplete('painted')}}" aria-valuemin="0" aria-valuemax="100" style="width: {{unit.stats.percentComplete('painted')}}% ">
                   </div>
               </div>
-              <a href="/army?id={{unit.name}}" class="btn btn-danger">
+              <a href="/unit?army_id={{ndb_army.key}}&unit_id={{unit.key}}" class="btn btn-danger">
                 <i class="zmdi zmdi-star"></i> {{unit.stats.percentComplete('painted')}}% complete</a>
               <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sed labore autem nesciunt ea veniam recusandae necessitatibus reprehenderit.</p>-->
               <!--<a href="/army?id={{unit.name}}" class="btn btn-danger btn-raised">
